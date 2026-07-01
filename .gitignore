@@ -1,0 +1,4 @@
+*.csv
+__pycache__/preprocess_delhi_climate.cpython-310.pyc
+__pycache__/train_linear_regression.cpython-310.pyc
+__pycache__/train_nbeats.cpython-310.pyc
