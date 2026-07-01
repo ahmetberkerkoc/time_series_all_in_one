@@ -30,6 +30,7 @@ def build_time_series_features(csv_path: str | Path) -> pd.DataFrame:
     df["rolling_mean_4"] = df["target"].shift(1).rolling(window=4).mean()
     df["rolling_std_4"] = df["target"].shift(1).rolling(window=4).std()
 
+    df = df.dropna()    
     return df
 
 

@@ -22,6 +22,8 @@ from neuralforecast import NeuralForecast
 from neuralforecast.models import NBEATSx
 # Metric used to score forecasts.
 from sklearn.metrics import mean_absolute_error
+# Losses for training from neuralforecast
+from neuralforecast.losses.pytorch import MAE
 
 # Reuse the existing feature-building and chronological split helpers.
 from preprocess_delhi_climate import build_time_series_features, split_train_test
@@ -41,13 +43,21 @@ DATE_EXOG_COLS = [
     "is_month_end",
 ]
 
+HIST_EXOG_COLS = [
+    "humidity",
+    "wind_speed",
+    "meanpressure",
+    "rolling_mean_4",
+    "rolling_std_4"
+]
+
 # Default configuration used when tuning is skipped.
 DEFAULT_PARAMS = {
-    "input_size": 90,
+    "input_size":  7,#90,
     "stack_types": ["identity"],
     "n_blocks": [1],
     "mlp_units": [[512, 512]],
-    "max_steps": 500,
+    "max_steps": 1000,
     "learning_rate": 5e-4,
     "batch_size": 32,
     "scaler_type": "standard",
@@ -131,6 +141,10 @@ def to_neuralforecast_format(df: pd.DataFrame) -> pd.DataFrame:
     # Attach the date-derived exogenous columns used by NBEATSx.
     for col in DATE_EXOG_COLS:
         nf_df[col] = df[col].to_numpy()
+    
+    for col in HIST_EXOG_COLS:
+        nf_df[col] = df[col].to_numpy()
+        
     return nf_df
 
 
@@ -178,7 +192,7 @@ def build_model(train_nf: pd.DataFrame, model_params: dict) -> NBEATSx:
         random_seed=42,
         # Use a predictable model name in forecast outputs.
         alias="NBEATSx",
-        # Disable extra training artifacts and noisy UI features.
+        loss=MAE(),
         enable_checkpointing=False,
         enable_progress_bar=False,
         logger=False,
