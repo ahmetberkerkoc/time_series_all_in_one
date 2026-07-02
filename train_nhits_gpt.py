@@ -18,10 +18,10 @@ import numpy as np
 import pandas as pd
 # Forecasting wrapper used to fit and predict with neural models.
 from neuralforecast import NeuralForecast
-# NBEATSx model that supports exogenous variables.
-from neuralforecast.models import NBEATSx
+# NHITS model that supports exogenous variables.
+from neuralforecast.models import NHITS
 # Metric used to score forecasts.
-from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_absolute_error, mean_absolute_percentage_error
 # Losses for training from neuralforecast
 from neuralforecast.losses.pytorch import MAE
 
@@ -29,7 +29,7 @@ from neuralforecast.losses.pytorch import MAE
 from preprocess_delhi_climate import build_time_series_features, split_train_test
 
 
-# These are future-known calendar features passed into NBEATSx at prediction time.
+# These are future-known calendar features passed into NHITS at prediction time.
 DATE_EXOG_COLS = [
     "year",
     "quarter",
@@ -51,18 +51,19 @@ HIST_EXOG_COLS = [
     "rolling_std_4",
 ]
 
-OBSERVED_HIST_EXOG_COLS = [
-    "humidity",
-    "wind_speed",
-    "meanpressure",
-]
-
 # Default configuration used when tuning is skipped.
 DEFAULT_PARAMS = {
-    "input_size":  7,#90,
-    "stack_types": ["identity"],
-    "n_blocks": [1],
-    "mlp_units": [[512, 512]],
+    # Use the last 7 real target values: y[t-7], ..., y[t-1].
+    # Therefore lag-1 is included in the lookback window.
+    "input_size": 7,
+    # NHITS architecture. For h=1, keep frequency downsampling simple.
+    "n_blocks": [1, 1, 1],
+    "mlp_units": [[256, 256], [256, 256], [256, 256]],
+    "n_pool_kernel_size": [1, 1, 1],
+    "n_freq_downsample": [1, 1, 1],
+    "pooling_mode": "MaxPool1d",
+    "interpolation_mode": "linear",
+    # Training-related hyperparameters.
     "max_steps": 1000,
     "learning_rate": 5e-4,
     "batch_size": 32,
@@ -72,40 +73,52 @@ DEFAULT_PARAMS = {
 # Small bounded search space so tuning stays optional and reasonably fast.
 TUNING_CANDIDATES = [
     {
-        "input_size": 60,
-        "stack_types": ["identity"],
-        "n_blocks": [1],
-        "mlp_units": [[256, 256]],
+        "input_size": 7,
+        "n_blocks": [1, 1, 1],
+        "mlp_units": [[128, 128], [128, 128], [128, 128]],
+        "n_pool_kernel_size": [1, 1, 1],
+        "n_freq_downsample": [1, 1, 1],
+        "pooling_mode": "MaxPool1d",
+        "interpolation_mode": "linear",
         "max_steps": 300,
         "learning_rate": 1e-3,
         "batch_size": 32,
         "scaler_type": "standard",
     },
     {
-        "input_size": 90,
-        "stack_types": ["identity"],
-        "n_blocks": [1],
-        "mlp_units": [[256, 256]],
+        "input_size": 7,
+        "n_blocks": [1, 1, 1],
+        "mlp_units": [[256, 256], [256, 256], [256, 256]],
+        "n_pool_kernel_size": [1, 1, 1],
+        "n_freq_downsample": [1, 1, 1],
+        "pooling_mode": "MaxPool1d",
+        "interpolation_mode": "linear",
         "max_steps": 500,
         "learning_rate": 5e-4,
         "batch_size": 32,
         "scaler_type": "standard",
     },
     {
-        "input_size": 90,
-        "stack_types": ["identity"],
-        "n_blocks": [2],
-        "mlp_units": [[512, 512]],
+        "input_size": 14,
+        "n_blocks": [1, 1, 1],
+        "mlp_units": [[256, 256], [256, 256], [256, 256]],
+        "n_pool_kernel_size": [2, 2, 1],
+        "n_freq_downsample": [1, 1, 1],
+        "pooling_mode": "MaxPool1d",
+        "interpolation_mode": "linear",
         "max_steps": 500,
         "learning_rate": 5e-4,
-        "batch_size": 16,
+        "batch_size": 32,
         "scaler_type": "standard",
     },
     {
-        "input_size": 120,
-        "stack_types": ["identity"],
-        "n_blocks": [2],
-        "mlp_units": [[512, 512]],
+        "input_size": 30,
+        "n_blocks": [1, 1, 1],
+        "mlp_units": [[512, 512], [512, 512], [512, 512]],
+        "n_pool_kernel_size": [2, 2, 1],
+        "n_freq_downsample": [1, 1, 1],
+        "pooling_mode": "MaxPool1d",
+        "interpolation_mode": "linear",
         "max_steps": 700,
         "learning_rate": 3e-4,
         "batch_size": 16,
@@ -134,6 +147,52 @@ def ensure_train_test_files(
     return train_df, test_df
 
 
+def clean_train_test_boundary(
+    train_df: pd.DataFrame, test_df: pd.DataFrame
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Sort data and remove train/test boundary overlap.
+
+    For a true one-step-ahead test prediction at date t, the training history
+    must end before t. If cached train/test CSV files overlap at the boundary,
+    the first test row may already exist in train_df. That creates leakage and
+    also breaks the lag-1 check.
+    """
+    train_df = train_df.copy()
+    test_df = test_df.copy()
+
+    train_df["date"] = pd.to_datetime(train_df["date"])
+    test_df["date"] = pd.to_datetime(test_df["date"])
+
+    train_df = (
+        train_df.sort_values("date")
+        .drop_duplicates(subset=["date"], keep="last")
+        .reset_index(drop=True)
+    )
+    test_df = (
+        test_df.sort_values("date")
+        .drop_duplicates(subset=["date"], keep="last")
+        .reset_index(drop=True)
+    )
+
+    first_test_date = test_df["date"].min()
+    leaked_train_rows = train_df["date"] >= first_test_date
+    if leaked_train_rows.any():
+        removed = int(leaked_train_rows.sum())
+        print(
+            f"Removed {removed} train rows on/after first test date "
+            f"({first_test_date.date()}) to avoid one-step-ahead leakage."
+        )
+        train_df = train_df.loc[~leaked_train_rows].reset_index(drop=True)
+
+    if train_df.empty:
+        raise ValueError(
+            "Training data became empty after removing train/test overlap. "
+            "Check your split_train_test function or delete cached split CSV files."
+        )
+
+    return train_df, test_df
+
+
 def to_neuralforecast_format(df: pd.DataFrame) -> pd.DataFrame:
     """Convert the dataframe to NeuralForecast format with future-known exogenous data."""
     # NeuralForecast expects a series id, timestamp column, and target named y.
@@ -144,7 +203,7 @@ def to_neuralforecast_format(df: pd.DataFrame) -> pd.DataFrame:
             "y": df["target"].astype(float),
         }
     )
-    # Attach the date-derived exogenous columns used by NBEATSx.
+    # Attach the date-derived exogenous columns used by NHITS.
     for col in DATE_EXOG_COLS:
         nf_df[col] = df[col].to_numpy()
 
@@ -154,18 +213,16 @@ def to_neuralforecast_format(df: pd.DataFrame) -> pd.DataFrame:
     return nf_df
 
 
-def build_recursive_hist_exog(
-    history_nf: pd.DataFrame, row: pd.Series
-) -> dict[str, float]:
-    """Build historical exogenous values for the next recursive history row."""
-    hist_exog = {
-        col: float(row[col]) for col in OBSERVED_HIST_EXOG_COLS
-    }
-
-    recent_window = history_nf["y"].astype(float).iloc[-4:]
-    hist_exog["rolling_mean_4"] = float(recent_window.mean())
-    hist_exog["rolling_std_4"] = float(recent_window.std(ddof=1))
-    return hist_exog
+def assert_one_step_history(history_nf: pd.DataFrame, row: pd.Series) -> None:
+    """Check that the current row is exactly one step after the available history."""
+    expected_next_ds = history_nf["ds"].max() + pd.Timedelta(days=1)
+    current_ds = pd.to_datetime(row["date"])
+    if current_ds != expected_next_ds:
+        raise ValueError(
+            f"Expected next date {expected_next_ds.date()}, but got {current_ds.date()}. "
+            "This usually means train/test dates overlap at the boundary or "
+            "there are missing non-daily dates before forecasting."
+        )
 
 
 def parse_args() -> argparse.Namespace:
@@ -179,7 +236,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--use-saved-params",
         action="store_true",
-        help="Load parameters from nbeatsx_best_params.txt if it exists.",
+        help="Load parameters from nhits_best_params.txt if it exists.",
     )
     parser.add_argument(
         "--tune-limit",
@@ -190,20 +247,23 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def build_model(train_nf: pd.DataFrame, model_params: dict) -> NBEATSx:
-    # Create a one-step-ahead NBEATSx model configured from the chosen parameters.
-    return NBEATSx(
+def build_model(train_nf: pd.DataFrame, model_params: dict) -> NHITS:
+    # Create a one-step-ahead NHITS model configured from the chosen parameters.
+    return NHITS(
         # Forecast exactly one future step at a time.
         h=1,
         # Cap the lookback so it never exceeds half the available history.
-        input_size=min(model_params["input_size"], len(train_nf) // 2),
+        input_size=max(1, min(model_params["input_size"], len(train_nf) // 2)),
         # Tell the model which future exogenous columns will be supplied.
         futr_exog_list=DATE_EXOG_COLS,
         hist_exog_list=HIST_EXOG_COLS,
         # Architecture-related hyperparameters.
-        stack_types=model_params["stack_types"],
         n_blocks=model_params["n_blocks"],
         mlp_units=model_params["mlp_units"],
+        n_pool_kernel_size=model_params["n_pool_kernel_size"],
+        n_freq_downsample=model_params["n_freq_downsample"],
+        pooling_mode=model_params["pooling_mode"],
+        interpolation_mode=model_params["interpolation_mode"],
         # Training-related hyperparameters.
         max_steps=model_params["max_steps"],
         learning_rate=model_params["learning_rate"],
@@ -212,7 +272,7 @@ def build_model(train_nf: pd.DataFrame, model_params: dict) -> NBEATSx:
         # Fix randomness for reproducible runs.
         random_seed=42,
         # Use a predictable model name in forecast outputs.
-        alias="NBEATSx",
+        alias="NHITS",
         loss=MAE(),
         enable_checkpointing=False,
         enable_progress_bar=False,
@@ -220,39 +280,43 @@ def build_model(train_nf: pd.DataFrame, model_params: dict) -> NBEATSx:
     )
 
 
-def recursive_predict(
-    nf: NeuralForecast, history_df: pd.DataFrame, test_df: pd.DataFrame
+def walk_forward_one_step_predict(
+    nf: NeuralForecast, train_df: pd.DataFrame, test_df: pd.DataFrame
 ) -> pd.DataFrame:
-    """Forecast one step ahead recursively across the full test set."""
-    # Start recursive forecasting from the training history.
-    history_nf = history_df.copy()
-    # Collect one prediction per test row.
+    """Forecast each test row using only actual observations available up to t-1.
+
+    This is not recursive forecasting. For the prediction at time t, the input
+    history is train_df plus the already observed test rows before t. Therefore,
+    the model's most recent target value is the real lag-1 value, not a previous
+    prediction. With input_size=7, NHITS receives the last 7 real target values
+    in its lookback window whenever they are available.
+    """
     predictions: list[float] = []
 
-    # Step through the test period one date at a time.
-    for _, row in test_df.iterrows():
-        # Ask NeuralForecast to build the exact future frame shape it expects.
+    for step, (_, row) in enumerate(test_df.iterrows()):
+        # Use actual history only: full training set + observed test rows before t.
+        observed_history_df = pd.concat(
+            [train_df, test_df.iloc[:step]],
+            ignore_index=True,
+        )
+        history_nf = to_neuralforecast_format(observed_history_df)
+
+        # Make sure the current row is exactly one step after the history.
+        # This guarantees that the last y in history_nf is the lag-1 target.
+        assert_one_step_history(history_nf, row)
+
+        # Build the h=1 future dataframe expected by NeuralForecast.
         futr_df = nf.make_future_dataframe(df=history_nf)
-        # Fill in the known calendar features for the current future date.
+
+        # Fill future-known calendar features for the date being predicted.
         for col in DATE_EXOG_COLS:
             futr_df[col] = row[col]
-        for col in HIST_EXOG_COLS:
-            futr_df[col] = row[col]
-        # Predict the next single step using the current history.
+
+        # Predict one step ahead. The model uses the y lookback from history_nf,
+        # so lag-1, lag-2, ..., lag-7 are included through input_size=7.
         forecast_df = nf.predict(df=history_nf, futr_df=futr_df)
-        # Extract the scalar prediction from the forecast dataframe.
-        prediction = float(forecast_df["NBEATSx"].iloc[0])
-        predictions.append(prediction)
+        predictions.append(float(forecast_df["NHITS"].iloc[0]))
 
-        # Treat the prediction as the newly observed value for the next step.
-        next_history_row = futr_df.copy()
-        next_history_row["y"] = prediction
-        for col, value in build_recursive_hist_exog(history_nf, row).items():
-            next_history_row[col] = value
-        # Extend the history so the next iteration can forecast recursively.
-        history_nf = pd.concat([history_nf, next_history_row], ignore_index=True)
-
-    # Return predictions aligned with the original test dates and targets.
     results_df = test_df[["date", "target"]].copy()
     results_df["prediction"] = predictions
     return results_df
@@ -298,8 +362,10 @@ def evaluate_candidate(
     nf = NeuralForecast(models=[model], freq="D")
     # Fit using the reduced training portion only.
     nf.fit(df=train_core_nf, val_size=0)
-    # Evaluate with the same recursive one-step procedure used at test time.
-    validation_predictions = recursive_predict(nf, train_core_nf, validation_df)
+    # Evaluate with the same non-recursive one-step procedure used at test time.
+    validation_predictions = walk_forward_one_step_predict(
+        nf, train_core_df, validation_df
+    )
     # Lower MAE means the candidate is better.
     return mean_absolute_error(
         validation_predictions["target"], validation_predictions["prediction"]
@@ -333,11 +399,14 @@ def main() -> None:
     input_path = Path("DailyDelhiClimate.csv")
     train_path = Path("DailyDelhiClimate_train.csv")
     test_path = Path("DailyDelhiClimate_test.csv")
-    predictions_path = Path("DailyDelhiClimate_nbeats_predictions.csv")
-    params_path = Path("nbeatsx_best_params.txt")
+    predictions_path = Path("DailyDelhiClimate_nhits_predictions.csv")
+    params_path = Path("nhits_best_params.txt")
 
     # Load or create the train/test split used by this script.
     train_df, test_df = ensure_train_test_files(input_path, train_path, test_path)
+    # Remove any overlap from cached split files. The first test date must not
+    # already be present in train for one-step-ahead evaluation.
+    train_df, test_df = clean_train_test_boundary(train_df, test_df)
     # Convert the training data into the format expected by NeuralForecast.
     train_nf = to_neuralforecast_format(train_df)
 
@@ -361,12 +430,14 @@ def main() -> None:
     # Fit the final model on the full training data.
     nf = NeuralForecast(models=[model], freq="D")
     nf.fit(df=train_nf, val_size=0)
-    # Generate recursive one-step-ahead predictions for the full test set.
-    results_df = recursive_predict(nf, train_nf, test_df)
+    # Generate non-recursive rolling one-step-ahead predictions for the full test set.
+    # Each prediction uses actual observations up to t-1, so lag-1 is real.
+    results_df = walk_forward_one_step_predict(nf, train_df, test_df)
 
     # Compute the main regression error metrics.
     mae = mean_absolute_error(results_df["target"], results_df["prediction"])
     rmse = np.sqrt(((results_df["target"] - results_df["prediction"]) ** 2).mean())
+    mape = mean_absolute_percentage_error(results_df["target"], results_df["prediction"])
     # Save the test predictions to disk.
     results_df.to_csv(predictions_path, index=False)
 
@@ -376,6 +447,7 @@ def main() -> None:
     print("Test shape:", test_df.shape)
     print("Selected params:", selected_params)
     print(f"MAE: {mae:.4f}")
+    print(f"MAPE: {mape:.4f}")
     print(f"RMSE: {rmse:.4f}")
 
     # Show the first few rows as a quick sanity check.
