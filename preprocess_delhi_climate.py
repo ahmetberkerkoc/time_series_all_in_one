@@ -35,7 +35,7 @@ def build_time_series_features(csv_path: str | Path) -> pd.DataFrame:
 
 
 def split_train_test(
-    df: pd.DataFrame, test_size: float = 0.3
+    df: pd.DataFrame, test_size: float = 0.2
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Create a chronological train/test split for forecasting."""
     cleaned_df = df.dropna().reset_index(drop=True)
