@@ -1,0 +1,31 @@
+[project]
+name = "time-series-project"
+version = "0.1.0"
+description = "Time series forecasting experiments for the Delhi climate dataset."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "catboost",
+    "ipykernel",
+    "jupyter",
+    "lightgbm",
+    "matplotlib",
+    "neuralforecast",
+    "numpy",
+    "pandas",
+    "scikit-learn",
+    "statsmodels",
+    "tensorflow",
+    "torch",
+    "torchvision",
+    "xgboost",
+]
+
+[tool.uv]
+package = false
+
+
+[[tool.uv.index]]
+name = "databoss_pypi"
+url = "https://hub.databoss.com.tr/repository/pypi-group/simple/"
+default = true
