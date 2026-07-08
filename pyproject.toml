@@ -16,6 +16,7 @@ dependencies = [
     "pandas",
     "scikit-learn",
     "seaborn>=0.13.2",
+    "sktime>=1.0.1",
     "statsmodels",
     "tensorflow",
     "torch==2.5.1",

@@ -401,10 +401,8 @@ dependencies = [
     { name = "matplotlib", version = "3.10.9", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
     { name = "matplotlib", version = "3.11.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "pandas" },
     { name = "plotly" },
     { name = "scipy", version = "1.15.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
     { name = "scipy", version = "1.17.1", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
@@ -770,8 +768,7 @@ resolution-markers = [
     "python_full_version == '3.11.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/contourpy/1.3.3/contourpy-1.3.3.tar.gz", hash = "sha256:083e12155b210502d0bca491432bb04d56dc3432f95a979b429f2848c3dbe880" }
 wheels = [
@@ -854,8 +851,7 @@ version = "0.0.17"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/coreforecast/0.0.17/coreforecast-0.0.17.tar.gz", hash = "sha256:80f85deba12deb6153e36a127c2781eeaa09918de07393428923b537e2f7d259" }
 wheels = [
@@ -1366,8 +1362,7 @@ version = "3.14.0"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/h5py/3.14.0/h5py-3.14.0.tar.gz", hash = "sha256:2372116b2e0d5d3e5e705b7f663f7c8d96fa79a4052d250484ef91d24d6a08f4" }
 wheels = [
@@ -1995,8 +1990,7 @@ dependencies = [
     { name = "h5py", marker = "python_full_version >= '3.11'" },
     { name = "ml-dtypes", marker = "python_full_version >= '3.11'" },
     { name = "namex", marker = "python_full_version >= '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "optree", marker = "python_full_version >= '3.11'" },
     { name = "packaging", marker = "python_full_version >= '3.11'" },
     { name = "rich", marker = "python_full_version >= '3.11'" },
@@ -2162,8 +2156,7 @@ version = "4.6.0"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "scipy", version = "1.15.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
     { name = "scipy", version = "1.17.1", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
     { name = "scipy", version = "1.18.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
@@ -2406,8 +2399,7 @@ dependencies = [
     { name = "cycler", marker = "python_full_version >= '3.11'" },
     { name = "fonttools", marker = "python_full_version >= '3.11'" },
     { name = "kiwisolver", marker = "python_full_version >= '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "packaging", marker = "python_full_version >= '3.11'" },
     { name = "pillow", marker = "python_full_version >= '3.11'" },
     { name = "pyparsing", marker = "python_full_version >= '3.11'" },
@@ -2501,8 +2493,7 @@ version = "0.5.4"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/ml-dtypes/0.5.4/ml_dtypes-0.5.4.tar.gz", hash = "sha256:8ab06a50fb9bf9666dd0fe5dfb4676fa2b0ac0f31ecff72a6c3af8e22c063453" }
 wheels = [
@@ -2895,11 +2886,9 @@ dependencies = [
     { name = "coreforecast" },
     { name = "fsspec" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "optuna" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "pandas" },
     { name = "pytorch-lightning" },
     { name = "ray", extra = ["train", "tune"] },
     { name = "scipy", version = "1.15.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
@@ -3017,6 +3006,19 @@ name = "numpy"
 version = "2.4.6"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
 resolution-markers = [
+    "python_full_version >= '3.14' and sys_platform == 'win32'",
+    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
+    "python_full_version >= '3.14' and sys_platform == 'linux'",
+    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
+    "python_full_version == '3.13.*' and sys_platform == 'win32'",
+    "python_full_version == '3.12.*' and sys_platform == 'win32'",
+    "python_full_version == '3.13.*' and sys_platform == 'emscripten'",
+    "python_full_version == '3.12.*' and sys_platform == 'emscripten'",
+    "python_full_version == '3.13.*' and sys_platform == 'linux'",
+    "python_full_version == '3.13.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
+    "(python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version == '3.12.*' and platform_python_implementation != 'CPython' and sys_platform == 'linux')",
+    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
+    "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
     "python_full_version == '3.11.*' and sys_platform == 'win32'",
     "python_full_version == '3.11.*' and sys_platform == 'emscripten'",
     "(python_full_version == '3.11.*' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version == '3.11.*' and platform_python_implementation != 'CPython' and sys_platform == 'linux')",
@@ -3096,72 +3098,6 @@ wheels = [
     { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.4.6/numpy-2.4.6-pp311-pypy311_pp73-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:5dbbdb29840ca3d91ee0fece42fc29278886d908280bfec0a5846c6f901a3eb0" },
     { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.4.6/numpy-2.4.6-pp311-pypy311_pp73-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:8ad03c0965fb3c692200e74d458ca28c1dbb4ce96f9a479a8aa041ad5fabca02" },
     { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.4.6/numpy-2.4.6-pp311-pypy311_pp73-win_amd64.whl", hash = "sha256:2803abfebfc990042cd494d8ce2d5f82e9d847af6d35ec486923aa19dbad5e73" },
-]
-
-[[package]]
-name = "numpy"
-version = "2.5.0"
-source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
-resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.14' and sys_platform == 'linux'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-    "python_full_version == '3.13.*' and sys_platform == 'win32'",
-    "python_full_version == '3.12.*' and sys_platform == 'win32'",
-    "python_full_version == '3.13.*' and sys_platform == 'emscripten'",
-    "python_full_version == '3.12.*' and sys_platform == 'emscripten'",
-    "python_full_version == '3.13.*' and sys_platform == 'linux'",
-    "python_full_version == '3.13.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-    "(python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version == '3.12.*' and platform_python_implementation != 'CPython' and sys_platform == 'linux')",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-]
-sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0.tar.gz", hash = "sha256:5a129578019311b6e56bdd714250f19b518f7dceeeb8d1af5490f4942d3f891c" }
-wheels = [
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:489780423903667933b4ed6197b6ec3b75ea5dd17d1d8f0f38d798feb6921561" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:ece55976ced6bca95a03ae2839e2e5ccffe8eb6a3e7022415645eb154a81e4e6" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-macosx_14_0_arm64.whl", hash = "sha256:c83b664b0e6eee9594fa920cf0639d8af796606d3fad6cc70180c87e4b97c7be" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-macosx_14_0_x86_64.whl", hash = "sha256:bf80333980bf37f523341ddd72c783f39d6829ec7736b9eb99086388a2d52cc2" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:a1a4874217b36d5ac8fc876f52e39df56f8182c88463e9e2dceabf7ca8b7efb8" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:aaa760137137e8d3c920d27927748215b56014f92667dc9b6c27dfc61249255a" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:7174ce8265fc7f7417d171c9ea8fe905220748893ea67a2a7abe726ec331c4b0" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:b8c3daaf99de52415d20b42f8e8155c78642cb04207d02f9d317a0dcf1b3fb54" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-win32.whl", hash = "sha256:6206db0af545d73d068add6d992279145f158428d1da6cc49adc4b630c5d6ee5" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-win_amd64.whl", hash = "sha256:6f2d6873e2940c860a309d21e25b1e69af6aaffdd80aa056b04c16380db1c4f2" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp312-cp312-win_arm64.whl", hash = "sha256:a55e1eb2bca2cfd17a16b213c99dfc8502d47b0d494224d2122277d0400935ca" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:520e6b8be0a4b65840ac8090d4f51cef4bed66e2b0894d5a520f099adc24a9b2" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:146b81cdd3967fdb6beca8ba25f00c58741d8f3cbd797f55af0fbe0bfec3469c" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-macosx_14_0_arm64.whl", hash = "sha256:126b88d95e8ff9b00c9e717aa540469f21d6180162f84c0caec51b16215d49cd" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-macosx_14_0_x86_64.whl", hash = "sha256:d4313cef1594c5ce46c31b6e54e918338f63f16ee9322304e8c9114d6d81c8bd" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:750fb097caf26fa878746d9d119f6f9da12dedcbff1eea966c3e3447647c4a9e" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:3893adc2dc7c0412ba76777db55a049215d99c9aa3113003be8f49f4f1290ab9" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:835e454dd99b238cdc5a3f63bce2371296f5ebc53ca1e0f8e6ddbb6d92a29aab" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:6f9836778081a0a3c02a6a21493f3e9f5b311f8d2541934f31f05583dc999ea4" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-win32.whl", hash = "sha256:0b525be4744b60bb0557ac872d53ef07d085b5f39622bc579c98d3809d05b988" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-win_amd64.whl", hash = "sha256:44353e2878930039db472b99dc353d749826e4010bd4d2a7f835e94a97a5c748" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp313-cp313-win_arm64.whl", hash = "sha256:48f54b00711f83a5f796b70c518e8c2b3c5848dda03a54911f23eb68519b9b60" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:f27582c55ba4c750b7c58c8faf021d2cd9324a662b466229db8a417b41368af9" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:28e7137057d551e4a83c4ae414e3451f50568409db7569aacc7f9811ee06a446" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-macosx_14_0_arm64.whl", hash = "sha256:e1da54b53e75cd9fcfc23efcc7edab2c6aecf97b6037566d8a0fe804af8ec57c" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-macosx_14_0_x86_64.whl", hash = "sha256:694d8f74e156f7fd01179f1aa8faa2f648ab6ae0f70b6c3fe57a03249aea2303" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:1a7569a7b53c77716f036bb28cb1c91f166a26ec7d9502cd1e4bdfe502fdec22" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:39a0433bd4086ebd462960cf375e19195bb07b53dc1d87dd5fcf47ad78576f03" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:929f0c79ac38bcbd7154fe631dc907abfeddbcc5027a896bd1f7767323271e7a" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:cc4f247a47bbf070bfd70be53ccdcf47b800af563535e7bbe172322197c30e21" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-win32.whl", hash = "sha256:5dc71423499fab3f46f7a7201155ade1669ea101f2f429d332df9e72f8161731" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-win_amd64.whl", hash = "sha256:ebb81d9d5443e0309d6c54894c3fbed74ad7da0714352a67b6d773cd189eae73" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314-win_arm64.whl", hash = "sha256:3b94d0d0deceebfad3e67ae5c0e5eb87371e8f7a0581cd04a779928c2450cf1e" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:22f3d43e362d650bc39db1f17851302874a148ca95ba6981c1dfb5fa6862f35b" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-macosx_14_0_arm64.whl", hash = "sha256:243563efb4cd7528a264567e9fd206c87826457322521d06206a00bfa316c927" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-macosx_14_0_x86_64.whl", hash = "sha256:84881d825ca75249b189bbee875fcfe3238aa5c479e6100893cda566e8e86826" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:cda12aa4779d42b8771180aba759c96f527d43446d8f380ab59e2b35e8489efd" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:1c0121101093d2bd74981b10f8837d78e794a8ff57834eb27179f49e1ba11ac6" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:d371c92cfa09da00022f501ab67fafaea813d752eb30ac44336d45b1e5b0268a" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:9990713e9c38154c6861e7547f1e3fc7a87e75ff09bab24ef1cc81d81c2835e9" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-win32.whl", hash = "sha256:edadfbd4794b1086c0d822f81863e8a68fc129d132fd0bb9e31e955d7fbbbdb7" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-win_amd64.whl", hash = "sha256:f7e5fa4382967ae6548bd2f174219afb908e294b0d5f625af01166edd5f7d9aa" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/numpy/2.5.0/numpy-2.5.0-cp314-cp314t-win_arm64.whl", hash = "sha256:016623417bb330d719d579daf2d6b9a01ddc52e41a9ed61a47f39fde46dcd865" },
 ]
 
 [[package]]
@@ -3409,8 +3345,7 @@ dependencies = [
     { name = "alembic" },
     { name = "colorlog" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "packaging" },
     { name = "pyyaml" },
     { name = "sqlalchemy" },
@@ -3443,16 +3378,12 @@ wheels = [
 name = "pandas"
 version = "2.3.3"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
-resolution-markers = [
-    "(python_full_version < '3.11' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version < '3.11' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version < '3.11' and sys_platform == 'win32')",
-    "python_full_version < '3.11' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
-    "python_full_version < '3.11' and sys_platform != 'linux' and sys_platform != 'win32'",
-]
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "python-dateutil", marker = "python_full_version < '3.11'" },
-    { name = "pytz", marker = "python_full_version < '3.11'" },
-    { name = "tzdata", marker = "python_full_version < '3.11'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "python-dateutil" },
+    { name = "pytz" },
+    { name = "tzdata" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/2.3.3/pandas-2.3.3.tar.gz", hash = "sha256:e05e1af93b977f7eafa636d043f9f94c7ee3ac81af99c13508215942e64c993b" }
 wheels = [
@@ -3506,87 +3437,6 @@ wheels = [
 ]
 
 [[package]]
-name = "pandas"
-version = "3.0.3"
-source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
-resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.14' and sys_platform == 'linux'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-    "python_full_version == '3.13.*' and sys_platform == 'win32'",
-    "python_full_version == '3.12.*' and sys_platform == 'win32'",
-    "python_full_version == '3.13.*' and sys_platform == 'emscripten'",
-    "python_full_version == '3.12.*' and sys_platform == 'emscripten'",
-    "python_full_version == '3.13.*' and sys_platform == 'linux'",
-    "python_full_version == '3.13.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-    "(python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version == '3.12.*' and platform_python_implementation != 'CPython' and sys_platform == 'linux')",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-    "python_full_version == '3.11.*' and sys_platform == 'win32'",
-    "python_full_version == '3.11.*' and sys_platform == 'emscripten'",
-    "(python_full_version == '3.11.*' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version == '3.11.*' and platform_python_implementation != 'CPython' and sys_platform == 'linux')",
-    "python_full_version == '3.11.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
-    "python_full_version == '3.11.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-]
-dependencies = [
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
-    { name = "python-dateutil", marker = "python_full_version >= '3.11'" },
-    { name = "tzdata", marker = "(python_full_version >= '3.11' and sys_platform == 'emscripten') or (python_full_version >= '3.11' and sys_platform == 'win32')" },
-]
-sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3.tar.gz", hash = "sha256:696a4a00a2a2a35d4e5deb3fc946641b96c944f02230e4f76137fe35d806c4fc" }
-wheels = [
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:455f6f8139d4282188f526868dbc3c828470e88a3d9d59a891bd46a455f21b98" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp311-cp311-macosx_11_0_arm64.whl", hash = "sha256:4e15135e2ee5df1063313e2425ceef8ac0f4ae775893815b0923651b806a5639" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp311-cp311-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:05f1f1752b8533ea03f7f39a9c15b1a058d067bb48f4748948e7a8691e0510f2" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:8a1e45c80cceb3b4a21bc5939d52e8cbd8d9b7305309219d59e9754d9ce09e27" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp311-cp311-musllinux_1_2_aarch64.whl", hash = "sha256:14da8316da4d0c5a77618425996bfb1248ca87fc2c1486e6fde4652bd18b5824" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:a55066a0505dae0ba2b50a46637db34b46f9094c65c5d4800794ef6335010938" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp311-cp311-win_amd64.whl", hash = "sha256:6674ab18ad8c57802867264b00e15e7bb904700cdd9046e3b2fa1fce237439ea" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp311-cp311-win_arm64.whl", hash = "sha256:5cc09a68b3120e0f54870dede8287a7bb1fa463907e4fcec1ea77cab6179bf7a" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:fed2ff7fd9779120e388e285fc029bd5cf9490cdd2e4166a9ee22c0e49a9ab09" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:b168fc218fd80a6cbdbdbc1a97ddc7889ed057d7eb45f50d866ceab5f39904c4" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp312-cp312-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:0383c72c75cdcca61a9e116e611143902dbfd08bff356829c2f6d1cf40a9ca8c" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:6dc0b3fd2169c9157deed50b4d519553a3655c8c6a96027136d654592be973a9" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:7e65d5407dc0b394f509699650e4a2ec01c0514f21850f453fa60f3be79a5dbf" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:f8894dc474d648fe7b6ff0ca9b0bd73950d19952bc1a6534540762c5d79d305c" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp312-cp312-win_amd64.whl", hash = "sha256:c7be265b62cef88e253a941e4698604973736dcfe242fdb5198f0f7bc473cdcc" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp312-cp312-win_arm64.whl", hash = "sha256:557409bc4178e70ee8d9ddb494798e51ebf6ea59330f6be22c51bab2a7db6c49" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:67b3b64c11910cfa29f4e94a14d3bff9ee693b6fc76055e7cad549cee0aec5fa" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:39436b377d56d2a2e52d0395bdbee171f01068e99af5250509aceeb929f765c7" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:d4be06d68f9ddcfc645b87534911da79a8fbffc7573c80e0edcf42a5020624d8" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:a4eeb6830daf35a71cc09649bd823e2b542dac246cdee9614c6e4bd65028cd6a" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:1928e07221f82db493cd4af1e23c1bfca524a19a4699887975bff68f49a72bfb" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:51b1fe551acb77dac643c6fda86084d8d446c10fe64b06a9cc29c4cc8540e7f2" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313-win_amd64.whl", hash = "sha256:a82d532a3351d435432cd913edbccaf8b8e01d4dd0e5ced5a8d2e8ecd94c7e44" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313-win_arm64.whl", hash = "sha256:275c14e0fce14a2ec20eee474aecd305478ea3c1e6f6a9d8fe219a165542717e" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313t-macosx_10_13_x86_64.whl", hash = "sha256:46997386d528eb40376ecd6b033cf4a8a1e5282580f68f43de875b78cba2199d" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313t-macosx_11_0_arm64.whl", hash = "sha256:261e308dfb22448384b7580cf719d2f998fe2966c92893c3e77d14008af1f066" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:dd1a5d1def6a46002e964510bdc67c368aa0951df5d1d9f8365336f5a1f490cd" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:d72828c20c6d6e83e1e22a6a3b47b326b71664112fa9705dcbccfd7a39b62085" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313t-musllinux_1_2_aarch64.whl", hash = "sha256:d26cbe1fcfc12e8fd900e2454163e466b2d3af84f7c75481df7683ffc073d870" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313t-musllinux_1_2_x86_64.whl", hash = "sha256:3e91cec1879ada0624fc3dc9953c5cbd60208e59c0db28f540c5d6d47502422f" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp313-cp313t-win_amd64.whl", hash = "sha256:08d789b41f87e0905880e293cedf6197ce71fe67cc081358b1e148a491b9bd13" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:3650109c0f22879df8bd6179ab9ee3d7f1d1d4e7e0094a3f0032d9f51e2e64ac" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314-macosx_11_0_arm64.whl", hash = "sha256:bab900348131a7db1f69a7309ef141fd5680f1487094193bcbbb61791573bf8f" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:ba7e08b9ac1d54569cd1e256e3668975ed624d6826f7b68df0342b012007bddb" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:9d71c63ae4ebdbf70209742096f1fc46a83a0613c99d4b23766cced9ff8cd62a" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314-musllinux_1_2_aarch64.whl", hash = "sha256:e3a2ec42c98ffa2565a67e08e218d06d72576d758d90facb7c00805194d8f360" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314-musllinux_1_2_x86_64.whl", hash = "sha256:335f62418ed562cfc3c49e9e196375c28b729dcef8543abf4f9438e381bf3c76" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314-win_amd64.whl", hash = "sha256:3c20a521bbb85902f79f7270c80a59e1b5452d96d170c034f207181870f97ac5" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314-win_arm64.whl", hash = "sha256:a2d2dff8a04f3917b55ab3910c32990f8ddf7eceba114947838cefa976a68977" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314t-macosx_10_15_x86_64.whl", hash = "sha256:0d589105b3c14645af1738ff279b2995102d8f7a03b0a66dc8d95550eb513e04" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314t-macosx_11_0_arm64.whl", hash = "sha256:13fc1e853d9e04743d11ba75a985ccbc2a317fe07d8af61e445a6fd24dacd6a6" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314t-manylinux_2_24_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:819959dab7bbd0049c15623fbac4e29a191b9528160a61fb1032242d8ced2d9c" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314t-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:60ae316d3fd75d1858d450d0db0103ea2be3e7d4a95ec2f064f7e2ae63f7b028" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314t-musllinux_1_2_aarch64.whl", hash = "sha256:bd3a518890b400d32f9023722dc9a9a5c969f00b415419a3c06c043f09bb5d7d" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314t-musllinux_1_2_x86_64.whl", hash = "sha256:9c39be2d709d01fa972a0cabc522389fceca4f3969332ba25a7d6c5802cf976a" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314t-win_amd64.whl", hash = "sha256:4db8c527972a821cf5286b40ccc57642a39bc62e62022b42f99f8a67fca8c3a1" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/pandas/3.0.3/pandas-3.0.3-cp314-cp314t-win_arm64.whl", hash = "sha256:b2c95f8bfc1ee412bf482605d7bfd30c12d1d26bd59fdd91efeef1d4718decb1" },
-]
-
-[[package]]
 name = "pandocfilters"
 version = "1.5.1"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
@@ -3610,8 +3460,7 @@ version = "1.0.2"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/patsy/1.0.2/patsy-1.0.2.tar.gz", hash = "sha256:cdc995455f6233e90e22de72c37fcadb344e7586fb83f06696f54d92f8ce74c0" }
 wheels = [
@@ -4419,8 +4268,7 @@ wheels = [
 [package.optional-dependencies]
 train = [
     { name = "fsspec" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "pandas" },
     { name = "pyarrow" },
     { name = "pydantic" },
     { name = "requests" },
@@ -4428,8 +4276,7 @@ train = [
 ]
 tune = [
     { name = "fsspec" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "pandas" },
     { name = "pyarrow" },
     { name = "pydantic" },
     { name = "requests" },
@@ -4783,19 +4630,26 @@ wheels = [
 ]
 
 [[package]]
+name = "scikit-base"
+version = "1.0.2"
+source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
+sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-base/1.0.2/scikit_base-1.0.2.tar.gz", hash = "sha256:2bddbc77c3fe9d83dc692d3d3b6a0c7bf5443c2d4f703a08fb8559d2781c4246" }
+wheels = [
+    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-base/1.0.2/scikit_base-1.0.2-py3-none-any.whl", hash = "sha256:4a1ba87a65a92d58f29d30620832c1c4304375b6140cb463eabb61a7e00fe024" },
+]
+
+[[package]]
 name = "scikit-learn"
 version = "1.7.2"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
-resolution-markers = [
-    "(python_full_version < '3.11' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version < '3.11' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version < '3.11' and sys_platform == 'win32')",
-    "python_full_version < '3.11' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
-    "python_full_version < '3.11' and sys_platform != 'linux' and sys_platform != 'win32'",
-]
 dependencies = [
-    { name = "joblib", marker = "python_full_version < '3.11'" },
+    { name = "joblib" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "scipy", version = "1.15.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "threadpoolctl", marker = "python_full_version < '3.11'" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
+    { name = "scipy", version = "1.18.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "threadpoolctl" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.7.2/scikit_learn-1.7.2.tar.gz", hash = "sha256:20e9e49ecd130598f1ca38a1d85090e1a600147b9c02fa6f15d69cb53d968fda" }
 wheels = [
@@ -4829,73 +4683,6 @@ wheels = [
     { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.7.2/scikit_learn-1.7.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl", hash = "sha256:9656e4a53e54578ad10a434dc1f993330568cfee176dff07112b8785fb413106" },
     { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.7.2/scikit_learn-1.7.2-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:96dc05a854add0e50d3f47a1ef21a10a595016da5b007c7d9cd9d0bffd1fcc61" },
     { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.7.2/scikit_learn-1.7.2-cp314-cp314-win_amd64.whl", hash = "sha256:bb24510ed3f9f61476181e4db51ce801e2ba37541def12dc9333b946fc7a9cf8" },
-]
-
-[[package]]
-name = "scikit-learn"
-version = "1.9.0"
-source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
-resolution-markers = [
-    "python_full_version >= '3.14' and sys_platform == 'win32'",
-    "python_full_version >= '3.14' and sys_platform == 'emscripten'",
-    "python_full_version >= '3.14' and sys_platform == 'linux'",
-    "python_full_version >= '3.14' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-    "python_full_version == '3.13.*' and sys_platform == 'win32'",
-    "python_full_version == '3.12.*' and sys_platform == 'win32'",
-    "python_full_version == '3.13.*' and sys_platform == 'emscripten'",
-    "python_full_version == '3.12.*' and sys_platform == 'emscripten'",
-    "python_full_version == '3.13.*' and sys_platform == 'linux'",
-    "python_full_version == '3.13.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-    "(python_full_version == '3.12.*' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version == '3.12.*' and platform_python_implementation != 'CPython' and sys_platform == 'linux')",
-    "python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
-    "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-    "python_full_version == '3.11.*' and sys_platform == 'win32'",
-    "python_full_version == '3.11.*' and sys_platform == 'emscripten'",
-    "(python_full_version == '3.11.*' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version == '3.11.*' and platform_python_implementation != 'CPython' and sys_platform == 'linux')",
-    "python_full_version == '3.11.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'",
-    "python_full_version == '3.11.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
-]
-dependencies = [
-    { name = "joblib", marker = "python_full_version >= '3.11'" },
-    { name = "narwhals", marker = "python_full_version >= '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
-    { name = "scipy", version = "1.17.1", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "scipy", version = "1.18.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
-    { name = "threadpoolctl", marker = "python_full_version >= '3.11'" },
-]
-sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0.tar.gz", hash = "sha256:8833266989d3a5110178a9fae30783675460724d0e1efb13b14901d2c660c557" }
-wheels = [
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp311-cp311-macosx_10_9_x86_64.whl", hash = "sha256:9db6f4d34e68c8899e4cab27fdf8eafe6ed21f2ba52ceb25ea250cd237f8e47b" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp311-cp311-macosx_12_0_arm64.whl", hash = "sha256:f401448645a3e7bc115aa3c094097865155b34bff1cba8101857d9104e99074c" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp311-cp311-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:fd3a8ef0c758555a3b23c03adaa858af32f7736785ded50ad5991f59c4ed03fa" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:f7e254636164090da847715a27f8e5478feb98c40a9e0ee90cbd277de9e5ceb8" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp311-cp311-win_amd64.whl", hash = "sha256:5dc1818c77575d149e25fce9ef82dd7b7263ae372f03494158668ad632a69759" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp311-cp311-win_arm64.whl", hash = "sha256:366652351f092b219c248f1e72821e841960a63d8f358f1dcfd54dc1cbdbbc28" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:2bd41b0d201bc81575531b96b713d3eb5e5f50fb0b82101ff0f92294fdc236ac" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp312-cp312-macosx_12_0_arm64.whl", hash = "sha256:5be45aa4a42a68a533913a6ed736cf309de2226411c79ef8d609a5456f1939b1" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:5e50ed4da51974e86e940690e9a3d82e729b62b5a49f7c9bac534d515d39d86f" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:056c92bb67ad4c28463c2f2653d9701449201e7e7a9e94e321be0f71c4fef2b8" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp312-cp312-win_amd64.whl", hash = "sha256:4306775fad04cc4b472a1b15af1ae9cede1540fbfcc17fbce3767cd8dc7ae283" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp312-cp312-win_arm64.whl", hash = "sha256:26e22435f63bcdcf396b574273f29f13dd531f5ea035801f5be10ba1540a4e60" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:80746d63bd4b6eaca54d36fe5feaf4d28bb38dc6f9470f81c7cad7c40155f119" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp313-cp313-macosx_12_0_arm64.whl", hash = "sha256:5b934c45c252844a91d69fda3a34cff5e7307e1db10d77cb10a3980312c74713" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:38c3dcb9a1ffb85505ec53d54c7b4aea0cff70050425a7760c2af661ac85df05" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:da76d09304a4706db7cc1e3ebaa3b6b98a67365cc11d2996c4f1e58ba47df714" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp313-cp313-win_amd64.whl", hash = "sha256:5808d98f15c6bf6d9d96d2348c1997392a5888ce7097e664105f930c4bca1277" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp313-cp313-win_arm64.whl", hash = "sha256:d77f54c017633791bc0225a43e2f8d03745fdcfe4880268fcc4df15f505dec2e" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314-macosx_10_15_x86_64.whl", hash = "sha256:9656acd4e93f74e0b66c8a36c88830a99252dfa900044d36bc2212ae89a47162" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314-macosx_12_0_arm64.whl", hash = "sha256:24360002ae845e7866522b0a5bbf690802e7bc388cac8663502e78aa98598aa2" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:5162ad10a418c8a282dde04c9aa06965de3e9a65f33c1440c0ae69bb1a09d913" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:1fea2cc5677ab49d6f5bade978c866da44957b712d92e9635e8b4f723013c3cb" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314-win_amd64.whl", hash = "sha256:64fa347efc1c839c487433e40c5144d38c336e8a2b59c81aa8660373945c2673" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314-win_arm64.whl", hash = "sha256:1b944b6db288f6b926e3650026ddafb988929de95d11fc2cc5fa117773c9ba42" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314t-macosx_10_15_x86_64.whl", hash = "sha256:4ccacf04ca5f4b492158a5f28afe0ace43f81b2571e4b9a66d34848b46128949" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314t-macosx_12_0_arm64.whl", hash = "sha256:ee1a8db2c18c08e34c7412d4b10be1cac214cd4ea7dc9715a6a327eb49a37c96" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314t-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:147e9329ef0e39f75d4cffa02b2aa48d827832684926cd5210d9a2cb5c57246b" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:5bad8f8b9950321b54c965fdcbac6c6c55e79e16646b49977bcf3668d3870a1a" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314t-win_amd64.whl", hash = "sha256:78fc56eafd4edb9575d2d8950d1dd152061abb573341a1cb7e099fc40f6c6666" },
-    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scikit-learn/1.9.0/scikit_learn-1.9.0-cp314-cp314t-win_arm64.whl", hash = "sha256:051075bda8b7aab87b1906ab3d4740a1e1224a19d7b3781a576736edc94e76aa" },
 ]
 
 [[package]]
@@ -5057,7 +4844,7 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/scipy/1.18.0/scipy-1.18.0.tar.gz", hash = "sha256:67b2ad2ad54c72ca6d04975a9b2df8c3638c34ddd5b28738e94fc2b57929d378" }
 wheels = [
@@ -5111,10 +4898,8 @@ dependencies = [
     { name = "matplotlib", version = "3.10.9", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
     { name = "matplotlib", version = "3.11.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "pandas" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/seaborn/0.13.2/seaborn-0.13.2.tar.gz", hash = "sha256:93e60a40988f4d65e9f4885df477e2fdaff6b73a9ded434c1ab356dd57eefff7" }
 wheels = [
@@ -5146,6 +4931,27 @@ source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/six/1.17.0/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81" }
 wheels = [
     { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/six/1.17.0/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274" },
+]
+
+[[package]]
+name = "sktime"
+version = "1.0.1"
+source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
+dependencies = [
+    { name = "joblib" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "packaging" },
+    { name = "pandas" },
+    { name = "scikit-base" },
+    { name = "scikit-learn" },
+    { name = "scipy", version = "1.15.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
+    { name = "scipy", version = "1.18.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+]
+sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/sktime/1.0.1/sktime-1.0.1.tar.gz", hash = "sha256:3cc20576a03d46447e935c3d3512450ffd5b65ee0320af65db5ff71f4373d453" }
+wheels = [
+    { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/sktime/1.0.1/sktime-1.0.1-py3-none-any.whl", hash = "sha256:7da3a38376de7da6cbcfb9979800ae19a5804a7f1e49f941a7a65ca3531050a3" },
 ]
 
 [[package]]
@@ -5232,11 +5038,9 @@ version = "0.14.6"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "packaging" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "pandas" },
     { name = "patsy" },
     { name = "scipy", version = "1.15.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
     { name = "scipy", version = "1.17.1", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
@@ -5294,8 +5098,7 @@ version = "2.6.5"
 source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "packaging" },
     { name = "protobuf" },
 ]
@@ -5321,8 +5124,7 @@ dependencies = [
     { name = "libclang" },
     { name = "ml-dtypes" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "opt-einsum" },
     { name = "packaging" },
     { name = "protobuf" },
@@ -5398,13 +5200,11 @@ dependencies = [
     { name = "matplotlib", version = "3.11.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "neuralforecast" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
-    { name = "scikit-learn", version = "1.7.2", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "scikit-learn", version = "1.9.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "pandas" },
+    { name = "scikit-learn" },
     { name = "seaborn" },
+    { name = "sktime" },
     { name = "statsmodels" },
     { name = "tensorflow" },
     { name = "torch", version = "2.5.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
@@ -5430,6 +5230,7 @@ requires-dist = [
     { name = "pandas" },
     { name = "scikit-learn" },
     { name = "seaborn", specifier = ">=0.13.2" },
+    { name = "sktime", specifier = ">=1.0.1" },
     { name = "statsmodels" },
     { name = "tensorflow" },
     { name = "torch", marker = "sys_platform != 'linux' and sys_platform != 'win32'", specifier = "==2.5.1" },
@@ -5616,8 +5417,7 @@ source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/
 dependencies = [
     { name = "lightning-utilities" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "packaging" },
     { name = "torch", version = "2.5.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
     { name = "torch", version = "2.5.1", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
@@ -5639,8 +5439,7 @@ resolution-markers = [
 ]
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11' and python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
     { name = "pillow", marker = "python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
     { name = "torch", version = "2.5.1", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "python_full_version < '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
 ]
@@ -5667,8 +5466,7 @@ resolution-markers = [
 ]
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11' and sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*' and sys_platform != 'linux' and sys_platform != 'win32'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12' and sys_platform != 'linux' and sys_platform != 'win32'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11' and sys_platform != 'linux' and sys_platform != 'win32'" },
     { name = "pillow", marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
     { name = "torch", version = "2.5.1", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "sys_platform != 'linux' and sys_platform != 'win32'" },
 ]
@@ -5695,8 +5493,7 @@ resolution-markers = [
 ]
 dependencies = [
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "(python_full_version < '3.11' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version < '3.11' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version < '3.11' and sys_platform == 'win32')" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "(python_full_version == '3.11.*' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version == '3.11.*' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version == '3.11.*' and sys_platform == 'win32')" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "(python_full_version >= '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.12' and sys_platform == 'win32')" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "(python_full_version >= '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.11' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.11' and platform_python_implementation != 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.11' and sys_platform == 'win32')" },
     { name = "pillow", marker = "(python_full_version >= '3.13' and sys_platform == 'linux') or (platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or sys_platform == 'win32'" },
     { name = "torch", version = "2.5.1+cu124", source = { registry = "https://download.pytorch.org/whl/cu124" }, marker = "(python_full_version >= '3.13' and sys_platform == 'linux') or (platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or sys_platform == 'win32'" },
 ]
@@ -5815,11 +5612,9 @@ source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/
 dependencies = [
     { name = "narwhals" },
     { name = "numpy", version = "2.2.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.11.*'" },
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
     { name = "packaging" },
-    { name = "pandas", version = "2.3.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version < '3.11'" },
-    { name = "pandas", version = "3.0.3", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.11'" },
+    { name = "pandas" },
 ]
 sdist = { url = "https://hub.databoss.com.tr/repository/pypi-group/packages/utilsforecast/0.2.15/utilsforecast-0.2.15.tar.gz", hash = "sha256:c36d65d698a88d0fadc93d2d6737c304c3776397c60ae551ee17aa678caf3659" }
 wheels = [
@@ -6020,7 +5815,7 @@ resolution-markers = [
     "python_full_version == '3.12.*' and sys_platform != 'emscripten' and sys_platform != 'linux' and sys_platform != 'win32'",
 ]
 dependencies = [
-    { name = "numpy", version = "2.5.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
+    { name = "numpy", version = "2.4.6", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },
     { name = "nvidia-nccl-cu12", version = "2.21.5", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "(python_full_version >= '3.13' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or (python_full_version >= '3.12' and platform_machine != 'aarch64' and sys_platform == 'linux') or (python_full_version >= '3.12' and platform_python_implementation != 'CPython' and sys_platform == 'linux')" },
     { name = "nvidia-nccl-cu12", version = "2.30.7", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version == '3.12.*' and platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux'" },
     { name = "scipy", version = "1.18.0", source = { registry = "https://hub.databoss.com.tr/repository/pypi-group/simple/" }, marker = "python_full_version >= '3.12'" },

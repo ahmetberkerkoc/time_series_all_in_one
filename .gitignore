@@ -6,3 +6,4 @@ data
 *.pkl
 *.txt
 sil.py
+ett_results/*.png

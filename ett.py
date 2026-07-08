@@ -10,7 +10,9 @@ from sklearn.metrics import (
     mean_absolute_error as mae,
     mean_absolute_percentage_error as mape,
     mean_squared_error as mse,
+    
 )
+from sktime.performance_metrics.forecasting import mean_absolute_scaled_error as mase
 from sklearn.neural_network import MLPRegressor
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.tree import DecisionTreeRegressor
@@ -19,7 +21,6 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 import m3
 
 
-FORECAST_HORIZONS = {"h1": 10, "h2": 10, "m1": 10, "m2": 10}
 
 
 def prepare_feature_frame(df: pd.DataFrame) -> pd.DataFrame:
@@ -43,15 +44,16 @@ if __name__ == "__main__":
         try:
             datapath = f"data/ETT/Extracted/{ett_type}/ETT{ett_type}_extracted.csv"
             print("=" * 80)
+            print("True Training")
             print(f"Processing dataset: {ett_type}")
             print(f"Reading data from: {datapath}")
 
             df = pd.read_csv(datapath)
             y = df.loc[:, "y"]
             X = prepare_feature_frame(df)
-
-            forecast_horizon = FORECAST_HORIZONS[ett_type]
-            test_len = forecast_horizon
+            
+            test_len = int(len(y) * 0.2)
+            forecast_horizon = test_len
             train_len = len(y) - test_len
             score_dict = {}
             print(
@@ -88,13 +90,17 @@ if __name__ == "__main__":
             test_mse = mse(y_pred=our_preds.iloc[-test_len:], y_true=y.iloc[-test_len:])
             test_mae = mae(y_pred=our_preds.iloc[-test_len:], y_true=y.iloc[-test_len:])
             test_mape = mape(y_pred=our_preds.iloc[-test_len:], y_true=y.iloc[-test_len:])
-            score_dict["our"] = (test_mse, test_mae, test_mape)
+            test_mase = mase( y_true=y.iloc[-test_len:], y_pred=our_preds.iloc[-test_len:], y_train=y.iloc[:-test_len])
+            
+            score_dict["our"] = (test_mse, test_mae, test_mape, test_mase)
             print(f"Completed our: mse={test_mse:.6f}, mae={test_mae:.6f}, mape={test_mape:.6f}")
 
             sarimax_test_mse = mse(y_pred=stats_preds.iloc[-test_len:], y_true=y.iloc[-test_len:])
             sarimax_test_mae = mae(y_pred=stats_preds.iloc[-test_len:], y_true=y.iloc[-test_len:])
             sarimax_test_mape = mape(y_pred=stats_preds.iloc[-test_len:], y_true=y.iloc[-test_len:])
-            score_dict["sarimax"] = (sarimax_test_mse, sarimax_test_mae, sarimax_test_mape)
+            sarimax_test_mase = mase( y_true=y.iloc[-test_len:], y_pred=stats_preds.iloc[-test_len:], y_train=y.iloc[:-test_len])
+            
+            score_dict["sarimax"] = (sarimax_test_mse, sarimax_test_mae, sarimax_test_mape, sarimax_test_mase)
             print(
                 f"Completed sarimax: mse={sarimax_test_mse:.6f}, "
                 f"mae={sarimax_test_mae:.6f}, mape={sarimax_test_mape:.6f}"
@@ -114,12 +120,14 @@ if __name__ == "__main__":
                 mse(y_pred=model_pred, y_true=y_test),
                 mae(y_pred=model_pred, y_true=y_test),
                 mape(y_pred=model_pred, y_true=y_test),
+                mase(y_true=y_test, y_pred=model_pred, y_train=y_train)
             )
             print(
                 "Completed Hard_Tree: "
                 f"mse={score_dict['Hard_Tree'][0]:.6f}, "
                 f"mae={score_dict['Hard_Tree'][1]:.6f}, "
-                f"mape={score_dict['Hard_Tree'][2]:.6f}"
+                f"mape={score_dict['Hard_Tree'][2]:.6f},"
+                f"mase={score_dict['Hard_Tree'][3]:.6f}"                
             )
 
             print("Training model: LGBM")
@@ -136,10 +144,12 @@ if __name__ == "__main__":
                 mse(y_pred=model_pred, y_true=y_test),
                 mae(y_pred=model_pred, y_true=y_test),
                 mape(y_pred=model_pred, y_true=y_test),
+                mase(y_true=y_test, y_pred=model_pred, y_train=y_train)
             )
             print(
                 f"Completed LGBM: mse={score_dict['LGBM'][0]:.6f}, "
-                f"mae={score_dict['LGBM'][1]:.6f}, mape={score_dict['LGBM'][2]:.6f}"
+                f"mae={score_dict['LGBM'][1]:.6f}, mape={score_dict['LGBM'][2]:.6f}, "
+                f"mase={score_dict['LGBM'][3]:.6f}"
             )
 
             print("Training model: XGB")
@@ -153,10 +163,12 @@ if __name__ == "__main__":
                 mse(y_pred=model_pred, y_true=y_test),
                 mae(y_pred=model_pred, y_true=y_test),
                 mape(y_pred=model_pred, y_true=y_test),
+                mase(y_true=y_test, y_pred=model_pred, y_train=y_train)
             )
             print(
                 f"Completed XGB: mse={score_dict['XGB'][0]:.6f}, "
-                f"mae={score_dict['XGB'][1]:.6f}, mape={score_dict['XGB'][2]:.6f}"
+                f"mae={score_dict['XGB'][1]:.6f}, mape={score_dict['XGB'][2]:.6f}, "
+                f"mase={score_dict['XGB'][3]:.6f}"
             )
 
             X_train_scaled, X_test_scaled = X_scaled.iloc[:-forecast_horizon], X_scaled.iloc[-forecast_horizon:]
@@ -172,10 +184,12 @@ if __name__ == "__main__":
                 mse(y_pred=model_pred, y_true=y_test),
                 mae(y_pred=model_pred, y_true=y_test),
                 mape(y_pred=model_pred, y_true=y_test),
+                mase(y_true=y_test, y_pred=model_pred, y_train=y_train)
             )
             print(
                 f"Completed MLP: mse={score_dict['MLP'][0]:.6f}, "
                 f"mae={score_dict['MLP'][1]:.6f}, mape={score_dict['MLP'][2]:.6f}"
+                f"mase={score_dict['MLP'][3]:.6f}"
             )
 
             print("Training model: Linear")
@@ -189,10 +203,12 @@ if __name__ == "__main__":
                 mse(y_pred=model_pred, y_true=y_test),
                 mae(y_pred=model_pred, y_true=y_test),
                 mape(y_pred=model_pred, y_true=y_test),
+                mase(y_true=y_test, y_pred=model_pred, y_train=y_train)
             )
             print(
                 f"Completed Linear: mse={score_dict['Linear'][0]:.6f}, "
                 f"mae={score_dict['Linear'][1]:.6f}, mape={score_dict['Linear'][2]:.6f}"
+                f"mase={score_dict['Linear'][3]:.6f}"
             )
 
             print("Running baseline: Naive")
@@ -204,10 +220,12 @@ if __name__ == "__main__":
                 mse(y_pred=model_pred, y_true=y_test),
                 mae(y_pred=model_pred, y_true=y_test),
                 mape(y_pred=model_pred, y_true=y_test),
+                mase(y_true=y_test, y_pred=model_pred, y_train=y_train)
             )
             print(
                 f"Completed Naive: mse={score_dict['Naive'][0]:.6f}, "
                 f"mae={score_dict['Naive'][1]:.6f}, mape={score_dict['Naive'][2]:.6f}"
+                f"mase={score_dict['Naive'][3]:.6f}"
             )
 
             ax.legend()
