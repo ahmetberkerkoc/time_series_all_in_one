@@ -82,18 +82,21 @@ M3_SELECTED_FILES = {
         "Y338.csv",
     ],
 }
+TOURISM_SELECTED_FILES = [
+    "Y193_extracted.csv",
+]
 NBEATS_DEFAULT_PARAMS = {
-    "input_size": 7,
+    "input_size": 30,
     "stack_types": ["identity"],
     "n_blocks": [1],
-    "mlp_units": [[128, 128]],
-    "max_steps": 600,
+    "mlp_units": [[64, 64]],
+    "max_steps": 500,
     "learning_rate": 1e-3,
-    "batch_size": 32,
+    "batch_size": 1,
     "scaler_type": "standard",
 }
 NHITS_DEFAULT_PARAMS = {
-    "input_size": 7,
+    "input_size": 3,
     "n_blocks": [1, 1, 1],
     "mlp_units": [[64, 64], [64, 64], [64, 64]],
     "n_pool_kernel_size": [1, 1, 1],
@@ -106,7 +109,7 @@ NHITS_DEFAULT_PARAMS = {
     "scaler_type": "standard",
 }
 PATCHTST_DEFAULT_PARAMS = {
-    "input_size": 7,
+    "input_size": 3,
     "encoder_layers": 2,
     "n_heads": 4,
     "hidden_size": 64,
@@ -131,7 +134,7 @@ PATCHTST_DEFAULT_PARAMS = {
     "scaler_type": "standard",
 }
 DEEPAR_DEFAULT_PARAMS = {
-    "input_size": 7,
+    "input_size": 30,
     "lstm_n_layers": 3,
     "lstm_hidden_size": 128,
     "lstm_dropout": 0.1,
@@ -145,7 +148,7 @@ DEEPAR_DEFAULT_PARAMS = {
     "scaler_type": "standard",
 }
 ITRANSFORMER_DEFAULT_PARAMS = {
-    "input_size": 7,
+    "input_size": 3,
     "hidden_size": 128,
     "n_heads": 2,
     "e_layers": 2,
@@ -161,7 +164,7 @@ ITRANSFORMER_DEFAULT_PARAMS = {
     "scaler_type": "standard",
 }
 INFORMER_DEFAULT_PARAMS = {
-    "input_size": 7,
+    "input_size": 30,
     "hidden_size": 64,
     "conv_hidden_size": 32,
     "n_head": 2,
@@ -665,10 +668,10 @@ def load_m3_runs(series_limit: int | None) -> list[DatasetRun]:
 
 def load_ett_runs() -> list[DatasetRun]:
     runs: list[DatasetRun] = []
-    for ett_type in ["h1", "m1"]:
+    for ett_type in ["h2", "m1"]:
         csv_path = Path(f"data/ETT/Extracted/{ett_type}/ETT{ett_type}_extracted.csv")
         df = pd.read_csv(csv_path)
-        horizon = 10
+        horizon = max(1, int(len(df) * 0.2))
         runs.append(
             DatasetRun(
                 dataset_name=f"ett_{ett_type}",
@@ -688,14 +691,17 @@ def load_tourism_runs(
     tourism_sample_size: int,
 ) -> list[DatasetRun]:
     data_dir = Path("data/Tourism/Extracted")
+    csv_list = [data_dir / filename for filename in TOURISM_SELECTED_FILES]
+    missing_files = [path.name for path in csv_list if not path.exists()]
+    if missing_files:
+        raise FileNotFoundError(
+            f"Missing selected Tourism files: {', '.join(missing_files)}"
+        )
     csv_list = [
         csv_path
-        for csv_path in sorted(data_dir.glob("*.csv"))
+        for csv_path in csv_list
         if len(pd.read_csv(csv_path)) > 1
     ]
-    random.seed(RANDOM_SEED)
-    random.shuffle(csv_list)
-    csv_list = csv_list[:tourism_sample_size]
     if series_limit is not None:
         csv_list = csv_list[:series_limit]
 
@@ -741,7 +747,7 @@ def load_selected_runs(
 
 
 def result_pickle_path(model_name: str, dataset_name: str) -> Path:
-    return Path(f"ALL_RESULT_{model_name}_{dataset_name}.pkl")
+    return Path(f"ALL_RESULT_{model_name}_{dataset_name}_193_v2.pkl")
 
 
 def run_group(

@@ -6,3 +6,4 @@ for ett_type in ["h1", "h2", "m1", "m2"]:
     print(f"{ett_type}: ")
     pprint.pprint(data[ett_type])
 
+
