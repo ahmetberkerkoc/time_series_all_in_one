@@ -37,7 +37,7 @@ def build_lgbm_regressor(train_size, feature_count):
 
     return lgb.LGBMRegressor(
         n_estimators=100,
-        learning_rate=0.05,
+        learning_rate=0.001,
         num_leaves=num_leaves,
         min_child_samples=min_child_samples,
         min_split_gain=0.0,

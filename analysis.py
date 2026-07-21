@@ -67,7 +67,7 @@ def second_method(
         best_model = min(avg_score_by_model, key=avg_score_by_model.get)
         if best_model == "our":
             with open(
-                f"second_method_best_sample_{data_type}.txt", "w", encoding="utf-8"
+                f"second_method_best_sample_{data_type}_v2.txt", "w", encoding="utf-8"
             ) as f:
                 f.write(f"iteration={iteration}\n")
                 f.write(f"best_model={best_model}\n")
@@ -98,7 +98,7 @@ def second_method(
 
 if __name__ == "__main__":
     #first_method()
-    for m3_type in reversed([ "yearly"]):
+    for m3_type in reversed(["yearly"]):
         data = pd.read_pickle(f"ALL_RESULT_m3_{m3_type}.pkl")
         data = {
             key: value for key, value in data.items() if key.startswith(f"{m3_type}_")
@@ -106,6 +106,6 @@ if __name__ == "__main__":
         
         print(f"Running second_method for {m3_type} data with {len(data)} csv files.")
         try:
-            second_method(sample_size=5, max_iterations=100000, data=data, data_type=m3_type, metric="MAPE")
+            second_method(sample_size=1, max_iterations=100000, data=data, data_type=m3_type, metric="MSE")
         except RuntimeError as e:
             print(e)

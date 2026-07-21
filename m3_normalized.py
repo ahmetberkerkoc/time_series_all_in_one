@@ -10,6 +10,7 @@ rng = np.random.default_rng()
 from sklearn.linear_model import LinearRegression
 from sklearn.neural_network import MLPRegressor
 from sklearn.tree import DecisionTreeRegressor
+from catboost import CatBoostRegressor
 import lightgbm as lgb
 import xgboost as xgb
 from statsmodels.tsa.arima_process import arma_generate_sample
@@ -514,6 +515,19 @@ if __name__ == "__main__":
                 model_test_mape = mape(y_pred=model_pred, y_true=y_normalized[-test_len:])
 
                 score_dict["LGBM"] = (model_test_mse, model_test_mae, model_test_mape)
+
+                # CatBoost
+                regressor = CatBoostRegressor(random_seed=0, verbose=False)
+                regressor.fit(X_train, y_train)
+                model_pred = regressor.predict(X_test)
+                model_pred_series = pd.Series(model_pred,index=range(train_len,train_len + forecast_horizion))
+                model_pred_series.plot(ls="--", label="pred, CatBoost", ax=ax)
+
+                model_test_mse = mse(y_pred=model_pred, y_true=y_normalized[-test_len:])
+                model_test_mae = mae(y_pred=model_pred, y_true=y_normalized[-test_len:])
+                model_test_mape = mape(y_pred=model_pred, y_true=y_normalized[-test_len:])
+
+                score_dict["CatBoost"] = (model_test_mse, model_test_mae, model_test_mape)
                 
                 # XGB
                 regressor = xgb.XGBRegressor(random_state=0)

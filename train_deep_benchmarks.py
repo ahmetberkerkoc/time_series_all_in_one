@@ -50,37 +50,74 @@ DATE_EXOG_CANDIDATES = [
     "day_of_month",
 ]
 M3_SELECTED_FILES = {
+    # "monthly": [
+    #     "M838.csv",
+    #     "M1257.csv",
+    #     "M1149.csv",
+    #     "M537.csv",
+    #     "M587.csv",
+    #     "M788.csv",
+    #     "M304.csv",
+    #     "M1292.csv",
+    #     "M1323.csv",
+    #     "M385.csv",
+    # ],
     "monthly": [
-        "M838.csv",
-        "M1257.csv",
-        "M1149.csv",
-        "M537.csv",
-        "M587.csv",
-        "M788.csv",
-        "M304.csv",
-        "M1292.csv",
-        "M1323.csv",
-        "M385.csv",
+        "M583.csv",
+        "M927.csv",
+        "M442.csv",
+        "M1061.csv",
+        "M1370.csv",
+        "M748.csv",
+        "M275.csv",
+        "M1337.csv",
+        "M238.csv",
+        "M310.csv"
     ],
+    # "quarterly": [
+    #     "Q319.csv",
+    #     "Q667.csv",
+    #     "Q687.csv",
+    #     "Q699.csv",
+    #     "Q341.csv",
+    #     "Q7.csv",
+    #     "Q636.csv",
+    #     "Q555.csv",
+    #     "Q393.csv",
+    #     "Q154.csv",
+    # ],
     "quarterly": [
-        "Q319.csv",
-        "Q667.csv",
-        "Q687.csv",
-        "Q699.csv",
-        "Q341.csv",
-        "Q7.csv",
-        "Q636.csv",
-        "Q555.csv",
-        "Q393.csv",
-        "Q154.csv",
+        "Q270.csv",
+        "Q43.csv",
+        "Q470.csv",
+        "Q732.csv",
+        "Q436.csv",
+        "Q697.csv",
+        "Q281.csv",
+        "Q273.csv",
+        "Q79.csv",
+        "Q697.csv"
     ],
+    # "yearly": [
+    #     "Y135.csv",
+    #     "Y238.csv",
+    #     "Y234.csv",
+    #     "Y467.csv",
+    #     "Y338.csv",
+    # ],
     "yearly": [
-        "Y135.csv",
-        "Y238.csv",
-        "Y234.csv",
-        "Y467.csv",
-        "Y338.csv",
-    ],
+        "Y194.csv",
+        "Y216.csv",
+        "Y247.csv",
+        "Y369.csv",
+        "Y411.csv",
+        "Y374.csv",
+        "Y199.csv",
+        "Y547.csv",
+        "Y365.csv",
+        "Y364.csv",
+        "Y238.csv"
+    ]
 }
 TOURISM_SELECTED_FILES = [
     "Y193_extracted.csv",
@@ -747,7 +784,7 @@ def load_selected_runs(
 
 
 def result_pickle_path(model_name: str, dataset_name: str) -> Path:
-    return Path(f"ALL_RESULT_{model_name}_{dataset_name}_193_v2.pkl")
+    return Path(f"ALL_RESULT_{model_name}_{dataset_name}_normalized_mse.pkl")
 
 
 def run_group(

@@ -24,7 +24,7 @@ SAMPLE_SIZE = 100
 RANDOM_SEED = 0
 DATA_DIR = "data/Tourism/Extracted"
 RESULT_DIR = "tourism_results"
-RESULT_PICKLE = "ALL_RESULT_tourism.pkl"
+RESULT_PICKLE = "ALL_RESULT_tourism_last.pkl"
 
 
 def prepare_feature_frame(df: pd.DataFrame) -> pd.DataFrame:
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     ]
     random.shuffle(csv_list)
     csv_list = csv_list[:SAMPLE_SIZE]
-
+    csv_list = ["Y103_extracted.csv"]
     print(f"Selected {len(csv_list)} tourism series from {DATA_DIR}")
 
     for counter, csv_name in enumerate(csv_list, start=1):
@@ -87,7 +87,7 @@ if __name__ == "__main__":
             m3.UPD_NOISE_STD = 0.1
             m3.MEAS_NOISE_STD = 1
 
-            order = (2, 0, 0)
+            order = (3, 0, 0)
             X_scaled = pd.DataFrame(
                 MinMaxScaler().fit_transform(X),
                 index=X.index,
@@ -95,7 +95,7 @@ if __name__ == "__main__":
             )
 
             print("Running particle filter model: our")
-            pf = m3.filter_sgbdtsx(y, sx_order=order, exog=X_scaled, n_particles=len(y))
+            pf = m3.filter_sgbdtsx(y, sx_order=order, exog=X_scaled.iloc[:,-4:], n_particles=len(y))
             print("Running SARIMAX baseline")
             stats_sx = SARIMAX(y, X_scaled, order=order).fit(disp=False)
 
